@@ -5,6 +5,9 @@ import { Form, Input } from "./RegistrationFormStyles";
 import { auth } from "../../../firebase.js";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import svg from "../../../assets/icons.svg";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../redux/auth/slice.js";
 
 const registerSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,6 +22,8 @@ const registerSchema = Yup.object().shape({
 });
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -27,25 +32,23 @@ const RegistrationForm = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const onSubmit = async (data) => {
-    const { name, email, password } = data;
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+  const onSubmit = (data) => {
+    dispatch(registerUser(data));
+  };
 
-      await updateProfile(user, { displayName: name });
-      console.log("User registered:", user);
-    } catch (error) {
-      console.error("Error registering:", error.message);
-    }
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <h3>Registration</h3>
+      <p>
+        Thank you for your interest in our platform! In order to register, we
+        need some information. Please provide us with the following information.
+      </p>
       <Input>
         <label htmlFor="name">Name</label>
         <input id="name" {...register("name")} placeholder="Name" />
@@ -61,11 +64,13 @@ const RegistrationForm = () => {
         <input
           id="password"
           {...register("password")}
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
         />
-        <svg>
-          <use href={`${svg}#icon-eye`}></use>
+        <svg onClick={togglePassword}>
+          <use
+            href={showPassword ? `${svg}#icon-eye` : `${svg}#icon-eye-off`}
+          ></use>
         </svg>
         {errors.password && <p>{errors.password.message}</p>}
       </Input>

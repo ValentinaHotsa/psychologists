@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 const Home = lazy(() => import("./pages/HomePage"));
 const Psychologists = lazy(() => import("./pages/PsychologistsPage"));
@@ -16,7 +17,14 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="psychologists" element={<Psychologists />} />
-          <Route path="favorites" element={<Favorites />} />
+          <Route
+            path="favorites"
+            element={
+              <PrivateRoute>
+                <Favorites />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

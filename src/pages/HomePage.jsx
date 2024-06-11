@@ -11,13 +11,6 @@ const HomePage = () => {
   return (
     <div>
       <h1>HomePage</h1>
-      <button onClick={toggleModal}>OPEN MODAL</button>
-
-      {isOpen && (
-        <Modal onClose={toggleModal}>
-          <RegistrationForm />
-        </Modal>
-      )}
     </div>
   );
 };

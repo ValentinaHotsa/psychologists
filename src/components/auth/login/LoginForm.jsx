@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Form, Input } from "./LoginFormStyles";
-import { auth } from "../../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import svg from "../../../assets/icons.svg";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../redux/auth/slice";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -15,6 +16,7 @@ const loginSchema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -22,26 +24,22 @@ export const LoginForm = () => {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
+  const onSubmit = (data) => {
+    dispatch(loginUser(data));
+  };
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-
-      console.log("User login:", user);
-    } catch (error) {
-      console.error("Error sign in:", error.message);
-    }
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <h3>Log In</h3>
+      <p>
+        Welcome back! Please enter your credentials to access your account and
+        continue your search for a psychologist.
+      </p>
       <Input>
         <label htmlFor="email">Email</label>
         <input id="email" {...register("email")} placeholder="Email" />
@@ -52,11 +50,13 @@ export const LoginForm = () => {
         <input
           id="password"
           {...register("password")}
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
         />
-        <svg>
-          <use href={`${svg}#icon-eye`}></use>
+        <svg onClick={togglePassword}>
+          <use
+            href={showPassword ? `${svg}#icon-eye` : `${svg}#icon-eye-off`}
+          ></use>
         </svg>
         {errors.password && <p>{errors.password.message}</p>}
       </Input>
