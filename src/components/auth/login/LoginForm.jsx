@@ -15,8 +15,9 @@ const loginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-export const LoginForm = () => {
+export const LoginForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -24,8 +25,10 @@ export const LoginForm = () => {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
+
   const onSubmit = (data) => {
     dispatch(loginUser(data));
+    onSuccess();
   };
 
   const [showPassword, setShowPassword] = useState(false);

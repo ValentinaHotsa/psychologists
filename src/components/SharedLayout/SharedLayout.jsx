@@ -2,17 +2,22 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Suspense } from "react";
-import { LogoContainer } from "./SharedLayoutStyles";
+import { LogoContainer, Container } from "./SharedLayoutStyles";
 import Modal from "../modal/Modal";
 import { LoginForm } from "../auth/login/LoginForm";
 import RegistrationForm from "../auth/registration/RegistrationForm";
-import { logout } from "../../redux/auth/slice";
+import { logoutUser } from "../../redux/auth/slice";
 
 const SharedLayout = () => {
   const user = useSelector((state) => state.auth.user);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const closeModal = () => {
+    setLoginModalOpen(false);
+    setRegisterModalOpen(false);
+  };
 
   const handleLoginClick = () => {
     setLoginModalOpen(true);
@@ -23,16 +28,11 @@ const SharedLayout = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
-  };
-
-  const closeModal = () => {
-    setLoginModalOpen(false);
-    setRegisterModalOpen(false);
+    dispatch(logoutUser());
   };
 
   return (
-    <>
+    <Container>
       <header>
         <LogoContainer>
           <Link to="/">
@@ -45,9 +45,17 @@ const SharedLayout = () => {
           {user && <NavLink to="/favorites">Favorites</NavLink>}
         </nav>
         <div>
-          <button onClick={handleLoginClick}>Log In</button>
-          <button onClick={handleRegisterClick}>Registration</button>
-          <button onClick={handleLogout}>Log Out</button>
+          {user ? (
+            <>
+              <span>{user.displayName}</span>
+              <button onClick={handleLogout}>Log Out</button>
+            </>
+          ) : (
+            <>
+              <button onClick={handleLoginClick}>Log In</button>
+              <button onClick={handleRegisterClick}>Registration</button>
+            </>
+          )}
         </div>
       </header>
       <main>
@@ -58,16 +66,16 @@ const SharedLayout = () => {
 
       {isLoginModalOpen && (
         <Modal onClose={closeModal}>
-          <LoginForm />
+          <LoginForm onSuccess={closeModal} />
         </Modal>
       )}
 
       {isRegisterModalOpen && (
         <Modal onClose={closeModal}>
-          <RegistrationForm />
+          <RegistrationForm onSuccess={closeModal} />
         </Modal>
       )}
-    </>
+    </Container>
   );
 };
 

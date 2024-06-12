@@ -1,6 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import PrivateRoute from "./components/routes/PrivateRoute";
+import { useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import { setUser, clearUser } from "./redux/auth/slice";
 
 const Home = lazy(() => import("./pages/HomePage"));
 const Psychologists = lazy(() => import("./pages/PsychologistsPage"));
@@ -11,6 +15,18 @@ const SharedLayout = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch]);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>

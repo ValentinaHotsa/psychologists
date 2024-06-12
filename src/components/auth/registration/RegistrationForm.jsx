@@ -21,7 +21,7 @@ const registerSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
 
   const {
@@ -34,6 +34,7 @@ const RegistrationForm = () => {
 
   const onSubmit = (data) => {
     dispatch(registerUser(data));
+    onSuccess();
   };
 
   const [showPassword, setShowPassword] = useState(false);

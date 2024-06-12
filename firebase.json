@@ -1,0 +1,8 @@
+// {
+//   "database": {
+//     "rules": {
+//       ".read": "true",
+//       ".write": "true"
+//     }
+//   }
+// }

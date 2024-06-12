@@ -8,8 +8,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { persistor } from "./redux/store";
+import { listenToAuthChanges } from "./redux/auth/slice";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+store.dispatch(listenToAuthChanges());
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>

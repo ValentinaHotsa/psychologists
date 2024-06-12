@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 export const registerUser = createAsyncThunk(
@@ -18,8 +20,6 @@ export const registerUser = createAsyncThunk(
       const user = userCredential.user;
 
       await updateProfile(user, { displayName: name });
-      console.log("User registered:", user);
-
       return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -37,8 +37,19 @@ export const loginUser = createAsyncThunk(
         password
       );
       const user = userCredential.user;
-
       return user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "auth/logoutUser",
+  async (_, thunkAPI) => {
+    try {
+      await signOut(auth);
+      return;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -53,7 +64,10 @@ const authSlice = createSlice({
     error: null,
   },
   reducers: {
-    logout: (state) => {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    clearUser: (state) => {
       state.user = null;
     },
   },
@@ -83,9 +97,31 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.loading = false;
+        state.user = null;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { setUser, clearUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;
+
+export const listenToAuthChanges = () => (dispatch) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(setUser(user));
+    } else {
+      dispatch(clearUser());
+    }
+  });
+};
