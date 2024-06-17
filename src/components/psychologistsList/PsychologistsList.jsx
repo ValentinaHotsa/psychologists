@@ -13,6 +13,7 @@ import {
   setFilter,
 } from "../../redux/psychologists/slice";
 import Filter from "../../components/Filter/Filter";
+import PsychologistItem from "../PsychologistItem/PsychologistItem";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();
@@ -76,27 +77,7 @@ const PsychologistsList = () => {
       <Filter />
       <ul>
         {visiblePsychologists.map((psychologist) => (
-          <li key={psychologist.id}>
-            {/* <img src={psychologist.avatar_url} alt={psychologist.name} /> */}
-            <h2>{psychologist.name}</h2>
-            <p>{psychologist.specialization}</p>
-            {/* <p>Experience: {psychologist.experience}</p>
-            <p>Price per hour: ${psychologist.price_per_hour}</p>
-            <p>Rating: {psychologist.rating}</p>
-            <p>License: {psychologist.license}</p>
-            <p>Initial Consultation: {psychologist.initial_consultation}</p>
-            <p>About: {psychologist.about}</p>
-            <h3>Reviews:</h3>
-            <ul>
-              {psychologist.reviews.map((review, reviewIndex) => (
-                <li key={reviewIndex}>
-                  <p>Reviewer: {review.reviewer}</p>
-                  <p>Rating: {review.rating}</p>
-                  <p>Comment: {review.comment}</p>
-                </li>
-              ))}
-            </ul> */}
-          </li>
+          <PsychologistItem key={psychologist.id} psychologist={psychologist} />
         ))}
       </ul>
       {itemsNeedVisible && <button onClick={handleLoadMore}>Load more</button>}

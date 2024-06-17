@@ -2,11 +2,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/slice";
 import { psychologistsReducer } from "./psychologists/slice";
+import { favoritesReducer } from "./favorites/slice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     psychologists: psychologistsReducer,
+    favorites: favoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
