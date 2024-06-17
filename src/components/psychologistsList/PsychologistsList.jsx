@@ -1,32 +1,86 @@
 import { useEffect, useState } from "react";
-import { ref, onValue } from "firebase/database";
-import { db } from "../../firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPsychologists } from "../../redux/psychologists/operations";
+import {
+  selectPsychologists,
+  selectCurrentPage,
+  selectFilter,
+  selectItemsPerPage,
+} from "../../redux/psychologists/selectors";
+import {
+  resetState,
+  nextPage,
+  setFilter,
+} from "../../redux/psychologists/slice";
+import Filter from "../../components/Filter/Filter";
 
 const PsychologistsList = () => {
-  const [psychologists, setPsychologists] = useState([]);
+  const dispatch = useDispatch();
+  const psychologists = useSelector(selectPsychologists);
+  const currentPage = useSelector(selectCurrentPage);
+  const filter = useSelector(selectFilter);
+  const itemsPerPage = useSelector(selectItemsPerPage);
+
+  const applyFilter = (psychologists, filter) => {
+    switch (filter) {
+      case "A to Z":
+        return psychologists
+          .slice()
+          .sort((a, b) => a.name.localeCompare(b.name));
+      case "Z to A":
+        return psychologists
+          .slice()
+          .sort((a, b) => b.name.localeCompare(a.name));
+      case "Less than 10$":
+        return psychologists.filter(
+          (psychologist) => psychologist.price_per_hour < 10
+        );
+      case "Greater than 10$":
+        return psychologists.filter(
+          (psychologist) => psychologist.price_per_hour > 10
+        );
+      case "Popular":
+        return psychologists.slice().sort((a, b) => b.rating - a.rating);
+      case "Not popular":
+        return psychologists.slice().sort((a, b) => a.rating - b.rating);
+      default:
+        return psychologists;
+    }
+  };
 
   useEffect(() => {
-    const dataRef = ref(db);
-    onValue(dataRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log("Firebase data: ", data); // Debugging log
-      if (data) {
-        setPsychologists(data);
-      }
-    });
-  }, []);
-  console.log("Psychologists state: ", psychologists); // Debugging log
+    dispatch(fetchPsychologists());
+  }, [dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetState());
+    };
+  }, [dispatch]);
+
+  const filteredPsychologists = applyFilter(psychologists, filter);
+
+  const visiblePsychologists = filteredPsychologists.slice(
+    0,
+    currentPage * itemsPerPage
+  );
+  const itemsNeedVisible = visiblePsychologists.length < psychologists.length;
+
+  const handleLoadMore = () => {
+    dispatch(nextPage());
+  };
 
   return (
     <div>
       <h1>Psychologists List</h1>
+      <Filter />
       <ul>
-        {psychologists.map((psychologist, index) => (
-          <li key={index}>
-            <img src={psychologist.avatar_url} alt={psychologist.name} />
+        {visiblePsychologists.map((psychologist) => (
+          <li key={psychologist.id}>
+            {/* <img src={psychologist.avatar_url} alt={psychologist.name} /> */}
             <h2>{psychologist.name}</h2>
             <p>{psychologist.specialization}</p>
-            <p>Experience: {psychologist.experience}</p>
+            {/* <p>Experience: {psychologist.experience}</p>
             <p>Price per hour: ${psychologist.price_per_hour}</p>
             <p>Rating: {psychologist.rating}</p>
             <p>License: {psychologist.license}</p>
@@ -41,10 +95,11 @@ const PsychologistsList = () => {
                   <p>Comment: {review.comment}</p>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </li>
         ))}
       </ul>
+      {itemsNeedVisible && <button onClick={handleLoadMore}>Load more</button>}
     </div>
   );
 };
