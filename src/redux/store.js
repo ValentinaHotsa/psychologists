@@ -1,50 +1,41 @@
 // store.js
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/slice";
 import { psychologistsReducer } from "./psychologists/slice";
 import { favoritesReducer } from "./favorites/slice";
 
+const persistConfig = {
+  key: "favorites",
+  storage,
+  whitelist: ["favorites"],
+};
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  psychologists: psychologistsReducer,
+  favorites: persistReducer(persistConfig, favoritesReducer),
+});
+
 export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    psychologists: psychologistsReducer,
-    favorites: favoritesReducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ["auth.user"],
+      },
     }),
 });
 
-// import { configureStore, combineReducers } from "@reduxjs/toolkit";
-// import { authReducer } from "./auth/slice";
-// import storage from "redux-persist/lib/storage";
-// import {
-//   persistReducer,
-//   persistStore,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
-
-// const persistConfig = {
-//   key: "auth",
-//   storage,
-// };
-
-// export const store = configureStore({
-//   reducer: {
-//     auth: persistReducer(persistConfig, authReducer),
-//   },
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
-// });
-
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

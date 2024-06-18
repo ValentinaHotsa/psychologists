@@ -7,6 +7,7 @@ import Modal from "../modal/Modal";
 import { LoginForm } from "../auth/login/LoginForm";
 import RegistrationForm from "../auth/registration/RegistrationForm";
 import { logoutUser } from "../../redux/auth/slice";
+import { resetItems } from "../../redux/favorites/slice";
 
 const SharedLayout = () => {
   const user = useSelector((state) => state.auth.user);
@@ -29,6 +30,7 @@ const SharedLayout = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    dispatch(resetItems());
   };
 
   return (
