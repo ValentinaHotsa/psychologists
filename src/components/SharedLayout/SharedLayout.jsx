@@ -2,7 +2,12 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Suspense } from "react";
-import { LogoContainer, Container } from "./SharedLayoutStyles";
+import {
+  LogoContainer,
+  Container,
+  ButtonLog,
+  ButtonReg,
+} from "./SharedLayoutStyles";
 import Modal from "../modal/Modal";
 import { LoginForm } from "../auth/login/LoginForm";
 import RegistrationForm from "../auth/registration/RegistrationForm";
@@ -54,8 +59,8 @@ const SharedLayout = () => {
             </>
           ) : (
             <>
-              <button onClick={handleLoginClick}>Log In</button>
-              <button onClick={handleRegisterClick}>Registration</button>
+              <ButtonLog onClick={handleLoginClick}>Log In</ButtonLog>
+              <ButtonReg onClick={handleRegisterClick}>Registration</ButtonReg>
             </>
           )}
         </div>
