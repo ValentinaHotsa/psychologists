@@ -5,14 +5,18 @@ import { Suspense } from "react";
 import {
   LogoContainer,
   Container,
+  ButtonContainer,
   ButtonLog,
-  ButtonReg,
+  UserContainer,
+  IconContainer,
+  NameContainer,
 } from "./SharedLayoutStyles";
 import Modal from "../modal/Modal";
 import { LoginForm } from "../auth/login/LoginForm";
 import RegistrationForm from "../auth/registration/RegistrationForm";
 import { logoutUser } from "../../redux/auth/slice";
 import { resetItems } from "../../redux/favorites/slice";
+import svg from "../../assets/icons.svg";
 
 const SharedLayout = () => {
   const user = useSelector((state) => state.auth.user);
@@ -53,15 +57,23 @@ const SharedLayout = () => {
         </nav>
         <div>
           {user ? (
-            <>
-              <span>{user.displayName}</span>
-              <button onClick={handleLogout}>Log Out</button>
-            </>
+            <UserContainer>
+              <NameContainer>
+                <IconContainer>
+                  <svg>
+                    <use href={`${svg}#icon-user`} />
+                  </svg>
+                </IconContainer>
+
+                <span>{user.displayName}</span>
+              </NameContainer>
+              <ButtonLog onClick={handleLogout}>Log Out</ButtonLog>
+            </UserContainer>
           ) : (
-            <>
+            <ButtonContainer>
               <ButtonLog onClick={handleLoginClick}>Log In</ButtonLog>
-              <ButtonReg onClick={handleRegisterClick}>Registration</ButtonReg>
-            </>
+              <ButtonLog onClick={handleRegisterClick}>Registration</ButtonLog>
+            </ButtonContainer>
           )}
         </div>
       </header>

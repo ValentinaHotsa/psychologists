@@ -22,6 +22,7 @@ export const Container = styled.div`
       color: ${theme.colors.black};
       font-size: 16px;
       line-height: 20px;
+      transition: color 0.3s ease;
     }
     a:hover,
     a:focus {
@@ -57,28 +58,63 @@ export const LogoContainer = styled.div`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ButtonLog = styled.button`
-  width: 124px;
-  height: 48px;
+  padding: 14px 40px;
   border: 1px solid rgba(25, 26, 21, 0.2);
   border-radius: 30px;
-
   background-color: transparent;
   color: ${theme.colors.black};
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: ${theme.colors.green};
+    color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.green};
+  }
 `;
 
-export const ButtonReg = styled.button`
-  width: 124px;
-  height: 48px;
-  border: 1px solid rgba(25, 26, 21, 0.2);
-  border-radius: 30px;
+export const NameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+`;
 
+export const UserContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+`;
+
+export const IconContainer = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   background-color: ${theme.colors.green};
-  color: ${theme.colors.white};
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: ${theme.colors.white};
+  }
 `;
