@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Suspense } from "react";
 import {
   LogoContainer,
-  Container,
+  Header,
+  ContainerPage,
   ButtonContainer,
   ButtonLog,
   UserContainer,
@@ -43,8 +44,8 @@ const SharedLayout = () => {
   };
 
   return (
-    <Container>
-      <header>
+    <ContainerPage>
+      <Header>
         <LogoContainer>
           <Link to="/">
             <span>psychologists.</span>services
@@ -76,7 +77,7 @@ const SharedLayout = () => {
             </ButtonContainer>
           )}
         </div>
-      </header>
+      </Header>
       <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
@@ -94,7 +95,7 @@ const SharedLayout = () => {
           <RegistrationForm onSuccess={closeModal} />
         </Modal>
       )}
-    </Container>
+    </ContainerPage>
   );
 };
 

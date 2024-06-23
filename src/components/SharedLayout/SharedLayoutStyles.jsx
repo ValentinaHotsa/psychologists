@@ -1,17 +1,24 @@
 import styled from "@emotion/styled";
 import { theme } from "../../styles/root";
 
-export const Container = styled.div`
-  header {
-    display: flex;
-    flex-direction: row;
-    gap: 150px;
-    border-bottom: 1px solid rgba(25, 26, 21, 0.1);
-    align-items: center;
-    justify-content: center;
-    padding-top: 38px;
-    padding-bottom: 38px;
-  }
+export const ContainerPage = styled.div`
+  // margin-left: auto;
+  // margin-right: auto;
+  // padding-left: 15px;
+  // padding-right: 15px;
+  // max-width: 1440px;
+  // min-width: 320px;
+`;
+export const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  gap: 150px;
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
   nav {
     display: flex;
     flex-direction: row;
