@@ -5,9 +5,23 @@ import {
   removeFromFavorites,
   selectFavorites,
 } from "../../redux/favorites/slice";
+import {
+  ItemWrapper,
+  PhotoContainer,
+  CardContainer,
+  HeaderCard,
+  LeftWrap,
+  RightWrap,
+  InfoList,
+  RatingWrap,
+  Description,
+  BtnWrap,
+  FavoriteButton,
+} from "./PsychologistItemStyles";
+import svg from "../../assets/icons.svg";
 
 const PsychologistItem = ({ psychologist }) => {
-  const { id, name, specialization } = psychologist;
+  const { id, name, specialization, rating, price_per_hour } = psychologist;
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -41,18 +55,64 @@ const PsychologistItem = ({ psychologist }) => {
 
   return (
     <li>
-      {/* <img src={psychologist.avatar_url} alt={psychologist.name} /> */}
-      <h2>{name}</h2>
-      <p>{specialization}</p>
-      <button type="button" onClick={handleFavoriteToggle}>
-        Favorite
-      </button>
-      {/* <p>Experience: {psychologist.experience}</p>
-            <p>Price per hour: ${psychologist.price_per_hour}</p>
-            <p>Rating: {psychologist.rating}</p>
-            <p>License: {psychologist.license}</p>
-            <p>Initial Consultation: {psychologist.initial_consultation}</p>
-            <p>About: {psychologist.about}</p>
+      <ItemWrapper>
+        <PhotoContainer>
+          <img src={psychologist.avatar_url} alt={name} />
+        </PhotoContainer>
+
+        <CardContainer>
+          <HeaderCard>
+            <LeftWrap>
+              <p>Psychologist</p>
+              <h2>{name}</h2>
+            </LeftWrap>
+            <RightWrap>
+              <RatingWrap>
+                <svg>
+                  <use href={`${svg}#icon-star`} />
+                </svg>
+                <p>Rating: {rating}</p>
+              </RatingWrap>
+              <BtnWrap>
+                <p>
+                  Price / 1 hour: <span>{price_per_hour}$</span>
+                </p>
+
+                <FavoriteButton type="button" onClick={handleFavoriteToggle}>
+                  <svg
+                    style={{
+                      fill: isFavorite ? "#54BE96" : "",
+                      stroke: isFavorite ? "#54BE96" : "#191A15",
+                    }}
+                  >
+                    <use href={`${svg}#icon-heart`} />
+                  </svg>
+                </FavoriteButton>
+              </BtnWrap>
+            </RightWrap>
+          </HeaderCard>
+
+          <InfoList>
+            <li>
+              Experience: <span>{psychologist.experience}</span>
+            </li>
+            <li>
+              License: <span>{psychologist.license}</span>
+            </li>
+            <li>
+              Specialization: <span>{specialization}</span>
+            </li>
+            <li>
+              Initial_consultation:{" "}
+              <span>{psychologist.initial_consultation}</span>
+            </li>
+          </InfoList>
+          <Description>{psychologist.about}</Description>
+        </CardContainer>
+      </ItemWrapper>
+
+      {/* 
+           
             <h3>Reviews:</h3>
             <ul>
               {psychologist.reviews.map((review, reviewIndex) => (
