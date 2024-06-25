@@ -11,6 +11,7 @@ export const DropdownHeader = styled.div`
   border-radius: 10px;
   border: none;
   background: ${theme.colors.lightGreen};
+  margin-bottom: 32px;
 `;
 
 export const DropdownListContainer = styled.div`

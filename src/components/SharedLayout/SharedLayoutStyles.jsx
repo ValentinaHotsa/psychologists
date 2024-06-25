@@ -1,23 +1,21 @@
 import styled from "@emotion/styled";
 import { theme } from "../../styles/root";
 
-export const ContainerPage = styled.div`
-  // margin-left: auto;
-  // margin-right: auto;
-  // padding-left: 15px;
-  // padding-right: 15px;
-  // max-width: 1440px;
-  // min-width: 320px;
-`;
+export const ContainerPage = styled.div``;
+
 export const Header = styled.header`
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 150px;
+  flex-wrap: wrap;
+  // gap: 150px;
+  max-width: 1184px;
+  row-gap: 20px;
+  column-gap: 20px;
   border-bottom: 1px solid rgba(25, 26, 21, 0.1);
   align-items: center;
   justify-content: center;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding: 24px 16px;
 
   nav {
     display: flex;
@@ -50,6 +48,9 @@ export const Header = styled.header`
       border-radius: 50px;
       background-color: ${theme.colors.green};
     }
+  }
+  @media screen and (min-width: 850px) {
+    justify-content: space-between;
   }
 `;
 

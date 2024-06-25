@@ -13,7 +13,6 @@ export const HomeContainer = styled.section`
   margin: 0 auto;
   padding-left: 16px;
   padding-right: 16px;
-
   position: relative;
   background: linear-gradient(
     to top left,
@@ -134,7 +133,7 @@ export const ButtonStart = styled.div`
   line-height: 24px;
   background-color: ${theme.colors.green};
   border-radius: 30px;
-  border: 1px solid ${theme.colors.green};
+  border: none;
   justify-content: center;
   align-items: center;
   display: flex;

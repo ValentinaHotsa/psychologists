@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPsychologists } from "../../redux/psychologists/operations";
 import {
@@ -14,6 +14,13 @@ import {
 } from "../../redux/psychologists/slice";
 import Filter from "../../components/Filter/Filter";
 import PsychologistItem from "../PsychologistItem/PsychologistItem";
+import {
+  PsychologistsPageSection,
+  ListWrap,
+  List,
+  Pc,
+  LoadButton,
+} from "./PsychologistsListStyles";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();
@@ -72,16 +79,24 @@ const PsychologistsList = () => {
   };
 
   return (
-    <div>
-      <h1>Psychologists List</h1>
-      <Filter />
-      <ul>
-        {visiblePsychologists.map((psychologist) => (
-          <PsychologistItem key={psychologist.id} psychologist={psychologist} />
-        ))}
-      </ul>
-      {itemsNeedVisible && <button onClick={handleLoadMore}>Load more</button>}
-    </div>
+    <PsychologistsPageSection>
+      <Pc>
+        <Filter />
+        <ListWrap>
+          <List>
+            {visiblePsychologists.map((psychologist) => (
+              <PsychologistItem
+                key={psychologist.id}
+                psychologist={psychologist}
+              />
+            ))}
+          </List>
+          {itemsNeedVisible && (
+            <LoadButton onClick={handleLoadMore}>Load more</LoadButton>
+          )}
+        </ListWrap>
+      </Pc>
+    </PsychologistsPageSection>
   );
 };
 

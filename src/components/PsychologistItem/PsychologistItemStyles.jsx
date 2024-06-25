@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 import { theme } from "../../styles/root";
 
 export const ItemWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;
   max-width: 1184px;
+
   height: auto;
   border-radius: 24px;
   padding: 24px;
@@ -25,11 +27,13 @@ export const PhotoContainer = styled.div`
   //   width: 120px;
   height: 120px;
   padding: 10.4px;
+
   img {
     border-radius: 15px;
     width: 96px;
     height: 96px;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -49,12 +53,14 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 `;
 
 export const HeaderCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
     justify-content: space-between;
@@ -65,6 +71,7 @@ export const LeftWrap = styled.div`
   display: flex;
   gap: 8px;
   flex-direction: column;
+
   p {
     font-size: 16px;
     font-weight: 500;
@@ -84,11 +91,14 @@ export const RightWrap = styled.div`
   flex-direction: column;
   gap: 16px;
   align-items: start;
+  // width: 100%;
+
   p {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
   }
+
   span {
     color: ${theme.colors.brightGreen};
   }
@@ -103,7 +113,6 @@ export const RatingWrap = styled.div`
   flex-direction: row;
   gap: 4px;
   padding-right: 16px;
-
   align-items: center;
 
   svg {
@@ -122,6 +131,7 @@ export const BtnWrap = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     justify-content: right;
     gap: 30px;
@@ -134,6 +144,7 @@ export const FavoriteButton = styled.button`
   background-color: transparent;
   width: 26px;
   height: 26px;
+
   svg {
     width: 23px;
     height: 20px;
@@ -141,6 +152,7 @@ export const FavoriteButton = styled.button`
     stroke: ${theme.colors.black};
   }
 `;
+
 export const InfoList = styled.ul`
   display: flex;
   flex-direction: row;
@@ -157,6 +169,7 @@ export const InfoList = styled.ul`
     line-height: 24px;
     color: ${theme.colors.grayText};
   }
+
   span {
     color: ${theme.colors.black};
   }
