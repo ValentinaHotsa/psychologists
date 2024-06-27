@@ -179,3 +179,15 @@ export const Description = styled.p`1
 font-size: 16px;
 line-height: 20px;
 color: ${theme.colors.grayText}`;
+
+export const ButtonMore = styled.button`
+  width: 82px;
+  color: ${theme.colors.black};
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+`;

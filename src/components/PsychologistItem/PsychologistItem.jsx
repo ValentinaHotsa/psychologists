@@ -17,14 +17,17 @@ import {
   Description,
   BtnWrap,
   FavoriteButton,
+  ButtonMore,
 } from "./PsychologistItemStyles";
 import svg from "../../assets/icons.svg";
+import MoreInfo from "./MoreInfo/MoreInfo";
 
 const PsychologistItem = ({ psychologist }) => {
   const { id, name, specialization, rating, price_per_hour } = psychologist;
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   useEffect(() => {
     setIsFavorite(favorites.some((favItem) => favItem.id === id));
@@ -51,6 +54,10 @@ const PsychologistItem = ({ psychologist }) => {
       addFavorite(psychologist);
     }
     setIsFavorite(!isFavorite);
+  };
+
+  const handleMoreClick = () => {
+    setShowMoreInfo(!showMoreInfo);
   };
 
   return (
@@ -103,26 +110,19 @@ const PsychologistItem = ({ psychologist }) => {
               Specialization: <span>{specialization}</span>
             </li>
             <li>
-              Initial_consultation:{" "}
+              Initial_consultation:
               <span>{psychologist.initial_consultation}</span>
             </li>
           </InfoList>
           <Description>{psychologist.about}</Description>
+          {!showMoreInfo && (
+            <ButtonMore type="button" onClick={handleMoreClick}>
+              Read more
+            </ButtonMore>
+          )}
+          {showMoreInfo && <MoreInfo psychologist={psychologist} />}
         </CardContainer>
       </ItemWrapper>
-
-      {/* 
-           
-            <h3>Reviews:</h3>
-            <ul>
-              {psychologist.reviews.map((review, reviewIndex) => (
-                <li key={reviewIndex}>
-                  <p>Reviewer: {review.reviewer}</p>
-                  <p>Rating: {review.rating}</p>
-                  <p>Comment: {review.comment}</p>
-                </li>
-              ))}
-            </ul> */}
     </li>
   );
 };
