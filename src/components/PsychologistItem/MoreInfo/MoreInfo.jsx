@@ -8,10 +8,26 @@ import {
   Avatar,
   HeaderWrap,
   Name,
+  ButtonAppointment,
 } from "./MoreInfoStyled";
 import svg from "../../../assets/icons.svg";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import Modal from "../../modal/Modal";
+import AppointmentForm from "../../appointmentForm/AppointmentForm";
 
 const MoreInfo = ({ psychologist }) => {
+  const user = useSelector((state) => state.auth.user);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Container>
       <ReviewList>
@@ -35,6 +51,22 @@ const MoreInfo = ({ psychologist }) => {
           </li>
         ))}
       </ReviewList>
+      <ButtonAppointment type="button" onClick={handleOpenModal}>
+        Make an appointment
+      </ButtonAppointment>
+
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          {user ? (
+            <AppointmentForm
+              psychologist={psychologist}
+              onSuccess={closeModal}
+            />
+          ) : (
+            "This action is only for logged in users"
+          )}
+        </Modal>
+      )}
     </Container>
   );
 };

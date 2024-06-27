@@ -4,6 +4,9 @@ import { theme } from "../../../styles/root";
 export const Container = styled.div``;
 
 export const ReviewList = styled.ul`
+  padding-bottom: 40px;
+  padding-top: 16px;
+
   li:not(:last-child) {
     margin-bottom: 25px;
   }
@@ -37,6 +40,7 @@ export const HeaderWrap = styled.div`
   flex-direction: row;
   gap: 12px;
   margin-bottom: 16px;
+  align-items: center;
 `;
 export const RatingWrap = styled.div`
   display: flex;
@@ -60,4 +64,19 @@ export const Content = styled.p`
   font-size: 16px;
   line-height: 20px;
   color: ${theme.colors.grayText};
+`;
+
+export const ButtonAppointment = styled.button`
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.green};
+  border-radius: 30px;
+  border: none;
+  padding: 14px 32px;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    background: rgb(54, 163, 121);
+  }
 `;
