@@ -5,6 +5,7 @@ import {
   DropdownList,
   DropdownListContainer,
 } from "./FilterStyled";
+import svg from "../../assets/icons.svg";
 
 const Dropdown = ({ defaultOption, onSelect, options }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,9 @@ const Dropdown = ({ defaultOption, onSelect, options }) => {
     <DropDownContainer ref={dropdownRef}>
       <DropdownHeader onClick={() => setIsOpen(!isOpen)}>
         {selectedOption}
+        <svg>
+          <use href={isOpen ? `${svg}#icon-up` : `${svg}#icon-down`} />
+        </svg>
       </DropdownHeader>
 
       {isOpen && (

@@ -19,7 +19,7 @@ const FavoritesList = () => {
         <Filter />
         {favorites.length === 0 ? (
           <Title>
-            No favorites. Go to the{" "}
+            No favorites. Go to the
             <Link to="/psychologists">Psychologists</Link> and add doctor to
             your favorites.
           </Title>

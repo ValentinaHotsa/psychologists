@@ -39,14 +39,14 @@ const PsychologistsList = () => {
         return psychologists
           .slice()
           .sort((a, b) => b.name.localeCompare(a.name));
-      case "Less than 10$":
-        return psychologists.filter(
-          (psychologist) => psychologist.price_per_hour < 10
-        );
-      case "Greater than 10$":
-        return psychologists.filter(
-          (psychologist) => psychologist.price_per_hour > 10
-        );
+      case "Less to greater":
+        return psychologists
+          .slice()
+          .sort((a, b) => a.price_per_hour - b.price_per_hour);
+      case "Greater to less":
+        return psychologists
+          .slice()
+          .sort((a, b) => b.price_per_hour - a.price_per_hour);
       case "Popular":
         return psychologists.slice().sort((a, b) => b.rating - a.rating);
       case "Not popular":

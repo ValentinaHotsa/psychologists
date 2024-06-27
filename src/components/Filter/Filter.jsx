@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../redux/psychologists/slice";
 import Dropdown from "./Dropdown";
+import { FilterContainer } from "./FilterStyled";
 
 const Filter = () => {
   const defaultFilter = "Show All";
@@ -9,8 +10,8 @@ const Filter = () => {
   const options = [
     "A to Z",
     "Z to A",
-    "Less than 10$",
-    "Greater than 10$",
+    "Less to greater",
+    "Greater to less",
     "Popular",
     "Not popular",
     "Show all",
@@ -19,14 +20,14 @@ const Filter = () => {
     dispatch(setFilter(selectedFilter));
   };
   return (
-    <div>
-      <span>Filter</span>
+    <FilterContainer>
+      <span>Filters</span>
       <Dropdown
         defaultOption={defaultFilter}
         onSelect={handleFilterChange}
         options={options}
       ></Dropdown>
-    </div>
+    </FilterContainer>
   );
 };
 
