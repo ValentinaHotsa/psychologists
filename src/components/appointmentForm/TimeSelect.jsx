@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import svg from "../../assets/icons.svg";
 import {
   DropDownContainer,
@@ -7,16 +7,39 @@ import {
   DropdownListContainer,
 } from "./AppointmentFormStyled";
 
-const TimeSelect = () => {
+const TimeSelect = ({ field, form }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedTime, setSelectedTime] = useState("");
-  const availableTimes = ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00"];
+  const [selectedTime, setSelectedTime] = useState(field.value || "00:00");
+  const availableTimes = [
+    "9:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+  ];
   const dropdownRef = useRef(null);
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
     setIsOpen(false);
+    form.setValue(field.name, time);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <DropDownContainer ref={dropdownRef}>
       <DropdownHeader onClick={() => setIsOpen(!isOpen)}>

@@ -1,6 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Swal from "sweetalert2";
 import {
   ModalContainer,
   Title,
@@ -37,11 +38,19 @@ const AppointmentForm = ({ psychologist, onSuccess }) => {
     control,
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(appointmentSchema) });
 
   const onSubmit = (data) => {
-    alert(data.name);
+    Swal.fire({
+      title: `Thanks for the appointment, ${data.name}`,
+      text: `You have successfully booked an appointment with ${psychologist.name} at ${data.time}`,
+      icon: "success",
+      iconColor: "#54BE96",
+      confirmButtonText: "Close",
+      confirmButtonColor: "#54BE96",
+    });
     onSuccess();
   };
 
@@ -103,7 +112,14 @@ const AppointmentForm = ({ psychologist, onSuccess }) => {
 
           <Input style={{ width: "232px" }}>
             <label htmlFor="time">Time</label>
-            <TimeSelect />
+            <Controller
+              name="time"
+              control={control}
+              defaultValue="00:00"
+              render={({ field }) => (
+                <TimeSelect field={field} form={{ setValue }} />
+              )}
+            />
             {errors.time && <ErrorMessage>{errors.time.message}</ErrorMessage>}
           </Input>
         </FormWrap>
