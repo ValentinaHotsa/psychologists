@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -13,26 +13,28 @@ import {
   Form,
   Input,
   FormWrap,
+  ErrorMessage,
 } from "./AppointmentFormStyled";
+import TimeSelect from "./TimeSelect";
 
 const appointmentSchema = Yup.object().shape({
   name: Yup.string()
+    .required("Name is required")
     .min(2, "Too Short!")
-    .max(15, "Too Long!")
-    .required("Name is required"),
+    .max(15, "Too Long!"),
+
   phone: Yup.string()
-    .matches(
-      /^\+?(\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-      "Phone number is not valid"
-    )
-    .required("Phone number is required"),
+    .required("Phone number is required")
+    .matches(/^\+380\d{9}$/, "Phone number is not valid"),
+
   time: Yup.string().required("Time is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  comment: Yup.string().min(2, "Too Short!").required("Name is required"),
+  comment: Yup.string().required("Comment is required").min(2, "Too Short!"),
 });
 
 const AppointmentForm = ({ psychologist, onSuccess }) => {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -69,32 +71,59 @@ const AppointmentForm = ({ psychologist, onSuccess }) => {
         <Input>
           <label htmlFor="name">Name</label>
           <input id="name" {...register("name")} placeholder="Name" />
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </Input>
         <FormWrap>
           <Input style={{ width: "232px" }}>
             <label htmlFor="phone">Phone</label>
-            <input id="phone" {...register("phone")} placeholder="Phone" />
-            {errors.phone && <p>{errors.phone.message}</p>}
+            <Controller
+              name="phone"
+              control={control}
+              defaultValue="+380"
+              render={({ field }) => (
+                <input
+                  {...field}
+                  value={field.value}
+                  onChange={(e) => {
+                    const value = e.target.value;
+
+                    if (value.startsWith("+380")) {
+                      field.onChange(value);
+                    } else {
+                      field.onChange("+380");
+                    }
+                  }}
+                />
+              )}
+            />
+            {errors.phone && (
+              <ErrorMessage>{errors.phone.message}</ErrorMessage>
+            )}
           </Input>
 
           <Input style={{ width: "232px" }}>
             <label htmlFor="time">Time</label>
-            <input id="time" {...register("time")} placeholder="Time" />
-            {errors.time && <p>{errors.time.message}</p>}
+            <TimeSelect />
+            {errors.time && <ErrorMessage>{errors.time.message}</ErrorMessage>}
           </Input>
         </FormWrap>
 
         <Input>
           <label htmlFor="email">Email</label>
           <input id="email" {...register("email")} placeholder="Email" />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </Input>
 
         <Input>
           <label htmlFor="comment">Comment</label>
-          <input id="comment" {...register("comment")} placeholder="Comment" />
-          {errors.comment && <p>{errors.comment.message}</p>}
+          <textarea
+            id="comment"
+            {...register("comment")}
+            placeholder="Comment"
+          />
+          {errors.comment && (
+            <ErrorMessage>{errors.comment.message}</ErrorMessage>
+          )}
         </Input>
         <Button type="submit">Send</Button>
       </Form>
