@@ -13,6 +13,8 @@ import {
 import svg from "../../../assets/icons.svg";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import Swal from "sweetalert2";
+
 import Modal from "../../modal/Modal";
 import AppointmentForm from "../../appointmentForm/AppointmentForm";
 
@@ -21,6 +23,15 @@ const MoreInfo = ({ psychologist }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    if (!user) {
+      Swal.fire({
+        text: "This feature is available only for registered users. Please log in.",
+        icon: "error",
+        confirmButtonColor: "#54BE96",
+      });
+
+      return;
+    }
     setIsModalOpen(true);
   };
 
@@ -57,14 +68,7 @@ const MoreInfo = ({ psychologist }) => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          {user ? (
-            <AppointmentForm
-              psychologist={psychologist}
-              onSuccess={closeModal}
-            />
-          ) : (
-            "This action is only for logged in users"
-          )}
+          <AppointmentForm psychologist={psychologist} onSuccess={closeModal} />
         </Modal>
       )}
     </Container>

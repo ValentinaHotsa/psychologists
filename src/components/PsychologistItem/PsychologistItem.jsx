@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+
 import {
   addToFavorites,
   removeFromFavorites,
@@ -24,6 +26,7 @@ import MoreInfo from "./MoreInfo/MoreInfo";
 
 const PsychologistItem = ({ psychologist }) => {
   const { id, name, specialization, rating, price_per_hour } = psychologist;
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -41,19 +44,28 @@ const PsychologistItem = ({ psychologist }) => {
   );
 
   const removeFavorite = useCallback(
-    (item) => {
-      dispatch(removeFromFavorites(item));
+    (id) => {
+      dispatch(removeFromFavorites(id));
     },
     [dispatch]
   );
 
   const handleFavoriteToggle = () => {
+    if (!user) {
+      Swal.fire({
+        text: "This feature is available only for registered users. Please log in.",
+        icon: "error",
+        confirmButtonColor: "#54BE96",
+      });
+
+      return;
+    }
+
     if (isFavorite) {
       removeFavorite(id);
     } else {
       addFavorite(psychologist);
     }
-    setIsFavorite(!isFavorite);
   };
 
   const handleMoreClick = () => {
@@ -128,3 +140,38 @@ const PsychologistItem = ({ psychologist }) => {
 };
 
 export default PsychologistItem;
+
+// const addFavorite = useCallback(
+//   (item) => {
+//     const isFavorites = favorites.some((favItem) => favItem.id === id);
+//     if (!isFavorites) {
+//       dispatch(addToFavorites(item));
+//     }
+//   },
+//   [dispatch, favorites, id]
+// );
+
+// const removeFavorite = useCallback(
+//   (item) => {
+//     dispatch(removeFromFavorites(item));
+//   },
+//   [dispatch]
+// );
+
+// const handleFavoriteToggle = () => {
+//   if (!user) {
+//     alert(
+//       "This feature is available only for registered users. Please log in."
+//     );
+//     return;
+//   }
+//   if (isFavorite) {
+//     removeFavorite(id);
+//   } else {
+//     addFavorite(psychologist);
+//   }
+// };
+
+// useEffect(() => {
+//   setIsFavorite(favorites.some((favItem) => favItem.id === psychologist.id));
+// }, [psychologist, favorites]);

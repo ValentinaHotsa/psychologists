@@ -2,7 +2,6 @@
 import { ref, onValue } from "firebase/database";
 import { db } from "../../firebase";
 import { setPsychologists } from "./slice";
-import { nanoid } from "@reduxjs/toolkit";
 
 export const fetchPsychologists = () => (dispatch) => {
   const unsubscribe = onValue(ref(db), (snapshot) => {
@@ -11,7 +10,7 @@ export const fetchPsychologists = () => (dispatch) => {
     const psychologistsArray = Array.isArray(data) ? data : Object.values(data);
     const psychologistsWithId = psychologistsArray.map((psychologist) => ({
       ...psychologist,
-      id: nanoid(),
+      id: psychologist.name,
     }));
 
     dispatch(setPsychologists(psychologistsWithId));
