@@ -83,7 +83,7 @@ const AppointmentForm = ({ psychologist, onSuccess }) => {
           {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </Input>
         <FormWrap>
-          <Input style={{ width: "232px" }}>
+          <Input style={{ minWidth: "232px" }}>
             <label htmlFor="phone">Phone</label>
             <Controller
               name="phone"
@@ -110,7 +110,7 @@ const AppointmentForm = ({ psychologist, onSuccess }) => {
             )}
           </Input>
 
-          <Input style={{ width: "232px" }}>
+          <Input>
             <label htmlFor="time">Time</label>
             <Controller
               name="time"

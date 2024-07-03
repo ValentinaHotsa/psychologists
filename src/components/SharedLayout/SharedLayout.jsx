@@ -13,8 +13,8 @@ import {
   NameContainer,
 } from "./SharedLayoutStyles";
 import Modal from "../modal/Modal";
-import { LoginForm } from "../auth/login/LoginForm";
-import RegistrationForm from "../auth/registration/RegistrationForm";
+import { LoginForm } from "../auth/LoginForm";
+import RegistrationForm from "../auth/RegistrationForm";
 import { logoutUser } from "../../redux/auth/slice";
 import { resetItems } from "../../redux/favorites/slice";
 import svg from "../../assets/icons.svg";

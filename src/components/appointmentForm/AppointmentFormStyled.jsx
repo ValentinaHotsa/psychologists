@@ -1,36 +1,51 @@
 import styled from "@emotion/styled";
 import { theme } from "../../styles/root";
-import Select from "react-select";
 
 export const ModalContainer = styled.div`
   max-width: 472px;
 `;
 
 export const TitleWrap = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 600px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const Title = styled.h2`
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 32px;
   color: ${theme.colors.black};
   margin-bottom: 10px;
+
+  @media screen and (min-width: 600px) {
+    font-size: 40px;
+    line-height: 48px;
+  }
 `;
 
 export const SubTitle = styled.p`
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 18px;
   color: ${theme.colors.grayText};
+
+  @media screen and (min-width: 600px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 `;
 
 export const DoctorWrap = styled.div`
   display: flex;
   flex-direction: row;
   gap: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 600px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const PhotoThumb = styled.div`
@@ -70,10 +85,13 @@ export const Button = styled.button`
   transition: background-color 0.3s ease;
   font-size: 16px;
   font-weight: 500;
-  margin-top: 24px;
 
   &:hover {
     background: rgb(54, 163, 121);
+  }
+
+  @media screen and (min-width: 500px) {
+    margin-top: 24px;
   }
 `;
 
@@ -127,8 +145,13 @@ export const Input = styled.div`
 
 export const FormWrap = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 8px;
+  flex-direction: column;
+  gap: 16px;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    gap: 8px;
+  }
 `;
 
 export const ErrorMessage = styled.div`
@@ -141,7 +164,6 @@ export const ErrorMessage = styled.div`
 
 export const DropDownContainer = styled.div`
   position: relative;
-  // width: 226px;
 `;
 
 export const DropdownHeader = styled.div`
@@ -151,9 +173,7 @@ export const DropdownHeader = styled.div`
   background-color: white;
   font-size: 16px;
   padding: 16px 18px;
-  margin-bottom: 8px;
   cursor: pointer;
-  width: 226px;
   height: 52px;
   display: flex;
   justify-content: space-between;
@@ -164,6 +184,11 @@ export const DropdownHeader = styled.div`
     height: 17px;
     stroke: ${theme.colors.black};
     fill: transparent;
+  }
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    width: 232px;
   }
 `;
 
@@ -178,6 +203,8 @@ export const DropdownListContainer = styled.div`
   box-shadow: 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
   background: rgb(255, 255, 255);
   padding: 16px;
+  margin-top: 8px;
+
   p {
     font-weight: 500;
   }

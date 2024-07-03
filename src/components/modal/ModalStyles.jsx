@@ -19,15 +19,22 @@ export const ModalDrop = styled.div`
 
 export const ModalWrapper = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // width: 90vw;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
   background: ${theme.colors.white};
-  padding: 64px;
+  padding: 30px;
+  max-height: 100vh;
+
+  @media screen and (min-width: 500px) {
+    max-width: 982px;
+    padding: 64px;
+  }
 `;
 
 export const CloseButton = styled.button`
