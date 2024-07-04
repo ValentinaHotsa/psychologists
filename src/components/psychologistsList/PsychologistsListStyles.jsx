@@ -4,7 +4,6 @@ import { theme } from "../../styles/root";
 export const PsychologistsPageSection = styled.section`
   height: 100%;
   width: 100%;
-  // max-width: 1440px;
   padding: 64px 16px;
   display: flex;
   flex-direction: column;

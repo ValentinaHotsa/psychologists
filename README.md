@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+# Psychologists.Services
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Psychologists.Services is a web application that allows users to browse a list of psychologists, read information about them, and make appointments. Users can register, log in, manage their favorite psychologists and make an appointment.
+<img src='src/assets/readme/title.png'>
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User Authentication: Register and log in to the application.
+- Home Page: Includes buttons for registration and login, which open modal forms for user authentication.
+- Psychologists List: Browse through a list of psychologists, view their details, prices, experience, and reviews.
+  <img src='src/assets/readme/card.png>
 
-### `npm start`
+- Favorites: Logged-in users can add psychologists to their favorites and view them on a private route.
+- Make an Appointment: Book an appointment with a psychologist through a modal form.
+  <img src='src/assets/readme/appointment.png>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Favorites Management: Add or remove psychologists from favorites using a heart icon on each psychologist's card.
+- Filtering: Filter psychologists and favorites by price, name, and popularity.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Responsive Design: The layout is responsive and works on devices from 320px to 1440px.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Frontend:** React, Redux, React Router, Emotion
 
-### `npm run build`
+**Backend:** Firebase (for user authentication and real-time database)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Form Handling:** React Hook Form, Yup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**UI Components:** React Loader Spinner, React Scroll to Top, SweetAlert2
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**State Persistence:** Redux Persist
 
-### `npm run eject`
+**Responsive Design:** CSS Flexbox and Grid for responsive layouts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Routes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `/` - Home Page:
+  - Description: Landing page with buttons for registration and login.
+  - Components: Registration and login modals.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src='src/assets/readme/auth.png>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `/psychologists` - Psychologists Page:
+  - Description: View a list of psychologists with their details.
+  - Components: Psychologist cards with details, filter options, and appointment booking modal.
 
-## Learn More
+<img src='src/assets/readme/favorite.png>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `/favorites` - Favorites Page:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - Description: Private route for logged-in users to view their favorite psychologists.
+  - Components: Favorite psychologist cards with details and filter options.
 
-### Code Splitting
+  <img src='/src/assets/readme/favorite.png'>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Design and Technical Documentation
 
-### Analyzing the Bundle Size
+- Design Mockups: [View Design Mockups](https://www.figma.com/file/I5vjNb0NsJOpQRnRpMloSY/Psychologists.Services?type=design&node-id=0-1&mode=design&t=4zfT2zFANRbp1fCK-0)
+- Technical Requirements: [View Technical Requirements](https://docs.google.com/document/d/1PrTxBn6HQbb0Oz17g5_zvyLGIOZg0TIP3HPaEEp6ZLs/edit)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Installation
 
-### Making a Progressive Web App
+To run this project locally, follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clone the repository:
 
-### Advanced Configuration
+```bash
+  git clone https://github.com/ValentinaHotsa/psychologists
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. Install the dependencies:
 
-### Deployment
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. Start the development server:
 
-### `npm run build` fails to minify
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author
+
+For more information or if you have any questions, feel free to contact me:
+
+- GitHub [ValentinaHotsa](https://github.com/ValentinaHotsa)
+- LinkedIn [Valentyna Hotsa](https://www.linkedin.com/in/valentynahotsa/)
+
+# UA
+
+Psychologists.Services — це веб-додаток, який дозволяє користувачам переглядати список психологів, читати інформацію про них і записуватися на прийом. Користувачі можуть зареєструватися, увійти, керувати улюбленими психологами та записатися до психолога.
+<img src='src/assets/readme/title.png'>
+
+## Особливості
+
+- Автентифікація користувача: зареєструйтеся та увійдіть у програму.
+- Домашня сторінка: містить кнопки для реєстрації та входу, які відкривають модальні форми для автентифікації користувача.
+- Список психологів: перегляньте список психологів, подивіться їх деталі, ціни, досвід та відгуки.
+  <img src='src/assets/readme/card.png>
+
+- Вибране: зареєстровані користувачі можуть додавати психологів у свої вибрані та переглядати їх на приватному маршруті.
+- Записатися на прийом: записатися на прийом до психолога через модальну форму.
+  <img src='src/assets/readme/appointment.png>
+
+- Керування уподобаннями: додавайте або видаляйте психологів із уподобань за допомогою значка серця на картці кожного психолога.
+- Фільтрація: фільтруйте психологів і фаворитів за ціною, назвою та популярністю.
+
+## Маршрути
+
+- `/` - Домашня сторінка:
+- Опис: цільова сторінка з кнопками для реєстрації та входу.
+- Компоненти: моди реєстрації та входу.
+
+<img src='src/assets/readme/auth.png>
+
+- `/psychologists` - Сторінка психологів:
+- Опис: перегляд списку психологів із їхніми даними.
+- Компоненти: картки психолога з деталями, параметрами фільтрів і записом на прийом.
+
+<img src='src/assets/readme/favorite.png>
+
+- `/favorites` - Сторінка вибраного:
+- Опис: приватний маршрут для зареєстрованих користувачів для перегляду своїх улюблених психологів.
+- Компоненти: улюблені картки психолога з деталями та параметрами фільтрів.
+- Адаптивний дизайн: макет адаптивний і працює на пристроях від 320px до 1440px.
+
+  <img src='/src/assets/readme/favorite.png'>
+
+  ## Дизайн-макет та технічне завдання
+
+- Макет: [Переглянути макет](https://www.figma.com/file/I5vjNb0NsJOpQRnRpMloSY/Psychologists.Services?type=design&node-id=0-1&mode=design&t=4zfT2zFANRbp1fCK-0)
+- Технічне завдання: [Переглянути технічне завдання](https://docs.google.com/document/d/1PrTxBn6HQbb0Oz17g5_zvyLGIOZg0TIP3HPaEEp6ZLs/edit)
+
+## Встановлення
+
+Щоб запустити цей проект локально, виконайте такі дії:
+
+1. Клонуйте репозиторій:
+
+```bash
+  git clone https://github.com/ValentinaHotsa/psychologists
+```
+
+2. Встановіть залежності:
+
+```
+npm install
+```
+
+3. Запустіть сервер розробки:
+
+```
+npm start
+```
+
+## Автор
+
+Щоб отримати додаткову інформацію або у вас виникли запитання, зв'яжіться зі мною:
+
+- GitHub [ValentinaHotsa](https://github.com/ValentinaHotsa)
+- LinkedIn [Valentyna Hotsa](https://www.linkedin.com/in/valentynahotsa/)

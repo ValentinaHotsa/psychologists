@@ -4,7 +4,6 @@ import { theme } from "../../styles/root";
 export const FavoriteSection = styled.section`
   height: 100%;
   width: 100%;
-  max-width: 1440px;
   padding: 64px 16px;
   display: flex;
   flex-direction: column;
@@ -24,6 +23,7 @@ export const FavoriteList = styled.ul`
 export const Title = styled.h4`
   font-size: 18px;
   text-align: center;
+
   a {
     color: ${theme.colors.green};
     transition: all 0.3s ease;
