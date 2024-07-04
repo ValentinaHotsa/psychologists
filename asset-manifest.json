@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/psychologists-services/static/css/main.ef65abad.css",
+    "main.js": "/psychologists-services/static/js/main.37657d57.js",
+    "static/js/472.10074660.chunk.js": "/psychologists-services/static/js/472.10074660.chunk.js",
+    "static/js/573.621ca05e.chunk.js": "/psychologists-services/static/js/573.621ca05e.chunk.js",
+    "static/js/544.4eebdca1.chunk.js": "/psychologists-services/static/js/544.4eebdca1.chunk.js",
+    "static/js/24.7ad37c13.chunk.js": "/psychologists-services/static/js/24.7ad37c13.chunk.js",
+    "static/js/829.5d0230d3.chunk.js": "/psychologists-services/static/js/829.5d0230d3.chunk.js",
+    "static/js/453.504b9fd9.chunk.js": "/psychologists-services/static/js/453.504b9fd9.chunk.js",
+    "static/js/789.e5f2ca9e.chunk.js": "/psychologists-services/static/js/789.e5f2ca9e.chunk.js",
+    "static/js/525.69febc5a.chunk.js": "/psychologists-services/static/js/525.69febc5a.chunk.js",
+    "static/js/385.ab62ecc2.chunk.js": "/psychologists-services/static/js/385.ab62ecc2.chunk.js",
+    "static/js/455.3bea4a8e.chunk.js": "/psychologists-services/static/js/455.3bea4a8e.chunk.js",
+    "static/media/hero@2x.jpg": "/psychologists-services/static/media/hero@2x.39c2db28c077527524a1.jpg",
+    "static/media/hero@1x.jpg": "/psychologists-services/static/media/hero@1x.1ec3e9c74e017da2aa76.jpg",
+    "static/media/icons.svg": "/psychologists-services/static/media/icons.cfe53f792548260e18d728d4857e4557.svg",
+    "index.html": "/psychologists-services/index.html",
+    "main.ef65abad.css.map": "/psychologists-services/static/css/main.ef65abad.css.map",
+    "main.37657d57.js.map": "/psychologists-services/static/js/main.37657d57.js.map",
+    "472.10074660.chunk.js.map": "/psychologists-services/static/js/472.10074660.chunk.js.map",
+    "573.621ca05e.chunk.js.map": "/psychologists-services/static/js/573.621ca05e.chunk.js.map",
+    "544.4eebdca1.chunk.js.map": "/psychologists-services/static/js/544.4eebdca1.chunk.js.map",
+    "24.7ad37c13.chunk.js.map": "/psychologists-services/static/js/24.7ad37c13.chunk.js.map",
+    "829.5d0230d3.chunk.js.map": "/psychologists-services/static/js/829.5d0230d3.chunk.js.map",
+    "453.504b9fd9.chunk.js.map": "/psychologists-services/static/js/453.504b9fd9.chunk.js.map",
+    "789.e5f2ca9e.chunk.js.map": "/psychologists-services/static/js/789.e5f2ca9e.chunk.js.map",
+    "525.69febc5a.chunk.js.map": "/psychologists-services/static/js/525.69febc5a.chunk.js.map",
+    "385.ab62ecc2.chunk.js.map": "/psychologists-services/static/js/385.ab62ecc2.chunk.js.map",
+    "455.3bea4a8e.chunk.js.map": "/psychologists-services/static/js/455.3bea4a8e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef65abad.css",
+    "static/js/main.37657d57.js"
+  ]
+}
