@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { setUser, clearUser } from "./redux/auth/slice";
+import Loader from "./components/Loader/Loader";
 
 const Home = lazy(() => import("./pages/HomePage"));
 const Psychologists = lazy(() => import("./pages/PsychologistsPage"));
@@ -28,7 +29,7 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />

@@ -18,6 +18,7 @@ import RegistrationForm from "../auth/RegistrationForm";
 import { logoutUser } from "../../redux/auth/slice";
 import { resetItems } from "../../redux/favorites/slice";
 import svg from "../../assets/icons.svg";
+import Loader from "../Loader/Loader";
 
 const SharedLayout = () => {
   const user = useSelector((state) => state.auth.user);
@@ -79,7 +80,7 @@ const SharedLayout = () => {
         </div>
       </Header>
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
