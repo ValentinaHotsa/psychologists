@@ -21,6 +21,7 @@ import {
   Pc,
   LoadButton,
 } from "./PsychologistsListStyles";
+import ScrollUp from "../ScrollUp/ScrollUp";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();
@@ -96,6 +97,7 @@ const PsychologistsList = () => {
           )}
         </ListWrap>
       </Pc>
+      <ScrollUp />
     </PsychologistsPageSection>
   );
 };

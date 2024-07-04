@@ -12,7 +12,6 @@ import {
 
 import svg from "../../assets/icons.svg";
 import { Link } from "react-router-dom";
-import Loader from "../Loader/Loader";
 
 const Home = () => {
   return (

@@ -19,10 +19,6 @@ export const ModalDrop = styled.div`
 
 export const ModalWrapper = styled.div`
   position: absolute;
-  // width: 90vw;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
