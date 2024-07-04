@@ -1,4 +1,3 @@
-// operations.js
 import { ref, onValue } from "firebase/database";
 import { db } from "../../firebase";
 import { setPsychologists } from "./slice";

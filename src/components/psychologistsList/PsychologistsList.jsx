@@ -14,7 +14,6 @@ import {
   PsychologistsPageSection,
   ListWrap,
   List,
-  Pc,
   LoadButton,
 } from "./PsychologistsListStyles";
 import ScrollUp from "../ScrollUp/ScrollUp";
@@ -77,7 +76,7 @@ const PsychologistsList = () => {
 
   return (
     <PsychologistsPageSection>
-      <Pc>
+      <div>
         <Filter />
         <ListWrap>
           <List>
@@ -92,7 +91,7 @@ const PsychologistsList = () => {
             <LoadButton onClick={handleLoadMore}>Load more</LoadButton>
           )}
         </ListWrap>
-      </Pc>
+      </div>
       <ScrollUp />
     </PsychologistsPageSection>
   );

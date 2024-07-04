@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import {
   LogoContainer,
   Header,
-  ContainerPage,
   ButtonContainer,
   ButtonLog,
   UserContainer,
@@ -45,7 +44,7 @@ const SharedLayout = () => {
   };
 
   return (
-    <ContainerPage>
+    <div>
       <Header>
         <LogoContainer>
           <Link to="/">
@@ -96,7 +95,7 @@ const SharedLayout = () => {
           <RegistrationForm onSuccess={closeModal} />
         </Modal>
       )}
-    </ContainerPage>
+    </div>
   );
 };
 

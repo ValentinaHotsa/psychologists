@@ -24,7 +24,6 @@ export const PhotoContainer = styled.div`
   position: relative;
   min-width: 120px;
   max-width: 120px;
-  //   width: 120px;
   height: 120px;
   padding: 10.4px;
 
@@ -91,7 +90,6 @@ export const RightWrap = styled.div`
   flex-direction: column;
   gap: 16px;
   align-items: start;
-  // width: 100%;
 
   p {
     font-size: 16px;

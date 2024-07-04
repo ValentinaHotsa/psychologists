@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
-import PrivateRoute from "./components/routes/PrivateRoute";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
+import PrivateRoute from "./components/routes/PrivateRoute";
 import { auth } from "./firebase";
 import { setUser, clearUser } from "./redux/auth/slice";
 import Loader from "./components/Loader/Loader";

@@ -15,7 +15,6 @@ export const HomeContainer = styled.section`
   padding-right: 36px;
   padding-top: 25px;
   padding-bottom: 25px;
-
   position: relative;
   background: linear-gradient(
     to top left,

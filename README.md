@@ -8,11 +8,11 @@ Psychologists.Services is a web application that allows users to browse a list o
 - User Authentication: Register and log in to the application.
 - Home Page: Includes buttons for registration and login, which open modal forms for user authentication.
 - Psychologists List: Browse through a list of psychologists, view their details, prices, experience, and reviews.
-  <img src='src/assets/readme/card.png>
+  <img src='src/assets/readme/card.png'>
 
 - Favorites: Logged-in users can add psychologists to their favorites and view them on a private route.
 - Make an Appointment: Book an appointment with a psychologist through a modal form.
-  <img src='src/assets/readme/appointment.png>
+  <img src='src/assets/readme/appointment.png'>
 
 - Favorites Management: Add or remove psychologists from favorites using a heart icon on each psychologist's card.
 - Filtering: Filter psychologists and favorites by price, name, and popularity.
@@ -39,13 +39,13 @@ Psychologists.Services is a web application that allows users to browse a list o
   - Description: Landing page with buttons for registration and login.
   - Components: Registration and login modals.
 
-<img src='src/assets/readme/auth.png>
+<img src='src/assets/readme/auth.png'>
 
 - `/psychologists` - Psychologists Page:
   - Description: View a list of psychologists with their details.
   - Components: Psychologist cards with details, filter options, and appointment booking modal.
 
-<img src='src/assets/readme/favorite.png>
+<img src='src/assets/readme/favorite.png'>
 
 - `/favorites` - Favorites Page:
 
@@ -90,45 +90,45 @@ For more information or if you have any questions, feel free to contact me:
 
 # UA
 
-Psychologists.Services — це веб-додаток, який дозволяє користувачам переглядати список психологів, читати інформацію про них і записуватися на прийом. Користувачі можуть зареєструватися, увійти, керувати улюбленими психологами та записатися до психолога.
+Psychologists.Services — це веб-додаток, який дозволяє користувачам переглядати список психологів, читати інформацію про них і записуватися на прийом. Користувачі можуть зареєструватися, увійти, керувати обраними та записатись до психолога.
 <img src='src/assets/readme/title.png'>
 
 ## Особливості
 
 - Автентифікація користувача: зареєструйтеся та увійдіть у програму.
-- Домашня сторінка: містить кнопки для реєстрації та входу, які відкривають модальні форми для автентифікації користувача.
-- Список психологів: перегляньте список психологів, подивіться їх деталі, ціни, досвід та відгуки.
-  <img src='src/assets/readme/card.png>
+- Домашня сторінка: містить кнопки для реєстрації та входу, які відкривають модальні вікна з формами для автентифікації користувача.
+- Список психологів: перегляньте список психологів, подивіться інформацію про них, ціни, досвід та відгуки.
+  <img src='src/assets/readme/card.png'>
 
-- Вибране: зареєстровані користувачі можуть додавати психологів у свої вибрані та переглядати їх на приватному маршруті.
-- Записатися на прийом: записатися на прийом до психолога через модальну форму.
-  <img src='src/assets/readme/appointment.png>
+- Вибране: зареєстровані користувачі можуть додавати психологів у свої вибрані та переглядати їх на приватному роуті.
+- Записатися на прийом: записатися на прийом до психолога через форму.
+  <img src='src/assets/readme/appointment.png'>
 
-- Керування уподобаннями: додавайте або видаляйте психологів із уподобань за допомогою значка серця на картці кожного психолога.
-- Фільтрація: фільтруйте психологів і фаворитів за ціною, назвою та популярністю.
+- Керування вибраним: додавайте або видаляйте психологів із обраного за допомогою значка серця на картці кожного психолога.
+- Фільтрація: фільтруйте психологів і обране за ціною, назвою та популярністю.
+- Адаптивний дизайн: макет адаптивний і працює на пристроях від 320px до 1440px.
 
 ## Маршрути
 
 - `/` - Домашня сторінка:
-- Опис: цільова сторінка з кнопками для реєстрації та входу.
-- Компоненти: моди реєстрації та входу.
+- Опис: головна сторінка з кнопками для реєстрації та входу.
+- Компоненти: модальні вікна реєстрації та входу.
 
-<img src='src/assets/readme/auth.png>
+<img src='src/assets/readme/auth.png'>
 
 - `/psychologists` - Сторінка психологів:
 - Опис: перегляд списку психологів із їхніми даними.
-- Компоненти: картки психолога з деталями, параметрами фільтрів і записом на прийом.
+- Компоненти: картки психологів з деталями, параметрами фільтрів і записом на прийом.
 
-<img src='src/assets/readme/favorite.png>
+<img src='src/assets/readme/favorite.png'>
 
 - `/favorites` - Сторінка вибраного:
-- Опис: приватний маршрут для зареєстрованих користувачів для перегляду своїх улюблених психологів.
-- Компоненти: улюблені картки психолога з деталями та параметрами фільтрів.
-- Адаптивний дизайн: макет адаптивний і працює на пристроях від 320px до 1440px.
+- Опис: приватний маршрут для зареєстрованих користувачів для перегляду своїх обраних психологів.
+- Компоненти: картки обраних психологів з деталями та параметрами фільтрів.
 
   <img src='/src/assets/readme/favorite.png'>
 
-  ## Дизайн-макет та технічне завдання
+## Дизайн-макет та технічне завдання
 
 - Макет: [Переглянути макет](https://www.figma.com/file/I5vjNb0NsJOpQRnRpMloSY/Psychologists.Services?type=design&node-id=0-1&mode=design&t=4zfT2zFANRbp1fCK-0)
 - Технічне завдання: [Переглянути технічне завдання](https://docs.google.com/document/d/1PrTxBn6HQbb0Oz17g5_zvyLGIOZg0TIP3HPaEEp6ZLs/edit)

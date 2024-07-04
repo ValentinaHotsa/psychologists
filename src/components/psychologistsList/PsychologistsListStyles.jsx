@@ -39,5 +39,3 @@ export const LoadButton = styled.button`
     background: rgb(54, 163, 121);
   }
 `;
-
-export const Pc = styled.div``;

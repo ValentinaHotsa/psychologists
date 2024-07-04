@@ -1,4 +1,3 @@
-// selectors.js
 export const selectPsychologists = (state) => state.psychologists.data;
 export const selectCurrentPage = (state) => state.psychologists.currentPage;
 export const selectItemsPerPage = (state) => state.psychologists.itemsPerPage;

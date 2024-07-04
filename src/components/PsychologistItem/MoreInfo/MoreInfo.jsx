@@ -1,3 +1,8 @@
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import Modal from "../../modal/Modal";
+import AppointmentForm from "../../appointmentForm/AppointmentForm";
 import {
   Container,
   ReviewList,
@@ -11,12 +16,6 @@ import {
   ButtonAppointment,
 } from "./MoreInfoStyled";
 import svg from "../../../assets/icons.svg";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-import Swal from "sweetalert2";
-
-import Modal from "../../modal/Modal";
-import AppointmentForm from "../../appointmentForm/AppointmentForm";
 
 const MoreInfo = ({ psychologist }) => {
   const user = useSelector((state) => state.auth.user);

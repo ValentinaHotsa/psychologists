@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../styles/root";
 
-export const ContainerPage = styled.div``;
-
 export const Header = styled.header`
   margin: 0 auto;
   display: flex;
