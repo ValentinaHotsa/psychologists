@@ -11,8 +11,11 @@ export const HomeContainer = styled.section`
   align-items: center;
   gap: 80px;
   margin: 0 auto;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
   position: relative;
   background: linear-gradient(
     to top left,
@@ -20,7 +23,8 @@ export const HomeContainer = styled.section`
     rgba(25, 26, 21, 0) 50%
   );
   min-height: 100vh;
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+
+  @media screen and (min-width: 1000px) {
     flex-direction: row;
     gap: 125px;
   }

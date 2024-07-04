@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { auth } from "../../firebase.js";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import svg from "../../assets/icons.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";

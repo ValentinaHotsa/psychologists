@@ -7,11 +7,7 @@ import {
   selectFilter,
   selectItemsPerPage,
 } from "../../redux/psychologists/selectors";
-import {
-  resetState,
-  nextPage,
-  setFilter,
-} from "../../redux/psychologists/slice";
+import { resetState, nextPage } from "../../redux/psychologists/slice";
 import Filter from "../../components/Filter/Filter";
 import PsychologistItem from "../PsychologistItem/PsychologistItem";
 import {

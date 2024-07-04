@@ -8,14 +8,12 @@ export const Header = styled.header`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // gap: 150px;
-  max-width: 1184px;
-  row-gap: 20px;
+  row-gap: 30px;
   column-gap: 20px;
   border-bottom: 1px solid rgba(25, 26, 21, 0.1);
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 24px 36px;
 
   nav {
     display: flex;
@@ -50,7 +48,7 @@ export const Header = styled.header`
     }
   }
   @media screen and (min-width: 850px) {
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 `;
 
