@@ -66,7 +66,7 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-  git clone https://github.com/ValentinaHotsa/psychologists
+  git clone https://github.com/ValentinaHotsa/psychologists.services
 ```
 
 2. Install the dependencies:
@@ -140,7 +140,7 @@ Psychologists.Services — це веб-додаток, який дозволяє
 1. Клонуйте репозиторій:
 
 ```bash
-  git clone https://github.com/ValentinaHotsa/psychologists
+  git clone https://github.com/ValentinaHotsa/psychologists.services
 ```
 
 2. Встановіть залежності:
