@@ -34,3 +34,25 @@ export const Title = styled.h4`
     text-decoration: underline;
   }
 `;
+
+export const LoadButton = styled.button`
+  color: ${theme.colors.white};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  transition: background-color 0.3s ease;
+  background-color: ${theme.colors.green};
+  border-radius: 30px;
+  border: none;
+  padding: 14px 48px;
+  margin: 0 auto;
+
+  &:hover {
+    background: rgb(54, 163, 121);
+  }
+`;
+
+export const ListWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
