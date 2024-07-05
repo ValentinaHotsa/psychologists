@@ -28,6 +28,7 @@ function App() {
     });
     return () => unsubscribe();
   }, [dispatch]);
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
