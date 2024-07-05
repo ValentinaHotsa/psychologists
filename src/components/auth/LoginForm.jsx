@@ -7,6 +7,7 @@ import {
   Input,
   SubmitButton,
   TitleWrap,
+  ErrorMessage,
 } from "./FormStyles";
 import svg from "../../assets/icons.svg";
 import { useState } from "react";
@@ -16,9 +17,9 @@ import { loginUser } from "../../redux/auth/slice";
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
+    .required("Password is required")
     .min(8, "Password is too short - should be 8 chars minimum.")
-    .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
-    .required("Password is required"),
+    .matches(/^[a-zA-Z0-9]+$/, "Password can only contain Latin letters."),
 });
 
 export const LoginForm = ({ onSuccess }) => {
@@ -56,7 +57,7 @@ export const LoginForm = ({ onSuccess }) => {
         <Input>
           <label htmlFor="email">Email</label>
           <input id="email" {...register("email")} placeholder="Email" />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </Input>
         <Input>
           <label htmlFor="password">Password</label>
@@ -71,7 +72,9 @@ export const LoginForm = ({ onSuccess }) => {
               href={showPassword ? `${svg}#icon-eye` : `${svg}#icon-eye-off`}
             ></use>
           </svg>
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
         </Input>
         <SubmitButton type="submit">Sign In</SubmitButton>
       </Form>

@@ -11,18 +11,19 @@ import {
   Form,
   Input,
   SubmitButton,
+  ErrorMessage,
 } from "./FormStyles.jsx";
 
 const registerSchema = Yup.object().shape({
   name: Yup.string()
+    .required("Name is required")
     .min(2, "Too Short!")
-    .max(15, "Too Long!")
-    .required("Name is required"),
+    .max(15, "Too Long!"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
+    .required("Password is required")
     .min(8, "Password is too short - should be 8 chars minimum.")
-    .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
-    .required("Password is required"),
+    .matches(/^[a-zA-Z0-9]+$/, "Password can only contain Latin letters."),
 });
 
 const RegistrationForm = ({ onSuccess }) => {
@@ -61,12 +62,12 @@ const RegistrationForm = ({ onSuccess }) => {
         <Input>
           <label htmlFor="name">Name</label>
           <input id="name" {...register("name")} placeholder="Name" />
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </Input>
         <Input>
           <label htmlFor="email">Email</label>
           <input id="email" {...register("email")} placeholder="Email" />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </Input>
         <Input>
           <label htmlFor="password">Password</label>
@@ -81,7 +82,9 @@ const RegistrationForm = ({ onSuccess }) => {
               href={showPassword ? `${svg}#icon-eye` : `${svg}#icon-eye-off`}
             ></use>
           </svg>
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
         </Input>
         <SubmitButton type="submit">Sign Up</SubmitButton>
       </Form>

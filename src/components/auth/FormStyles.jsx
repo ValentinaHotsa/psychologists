@@ -92,3 +92,11 @@ export const SubmitButton = styled.button`
     background: rgb(54, 163, 121);
   }
 `;
+
+export const ErrorMessage = styled.div`
+  color: #ff2e2e;
+  position: absolute;
+  font-size: 12px;
+  right: 8px;
+  top: 4px;
+`;
